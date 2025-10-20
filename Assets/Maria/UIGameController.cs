@@ -14,7 +14,6 @@ public class UIGameController : MonoBehaviour
     [SerializeField] TextMeshProUGUI candies;
 
     private int currentDoor = 0;
-    System.Random miniGameNumber = new System.Random();
 
     private void OnEnable()
     {
@@ -39,7 +38,7 @@ public class UIGameController : MonoBehaviour
         cardMinigame.SetActive(false);
         pressPanel.SetActive(false);
     }
-   public  void ShowPressPanel()
+    public void ShowPressPanel()
     {
         pressPanel.SetActive(true);
     }
@@ -52,8 +51,7 @@ public class UIGameController : MonoBehaviour
         candies.text = " Candies: " + GameManager.Instance.candiesQuantity.ToString();
         if (currentDoor != 0 && Input.GetKeyDown(KeyCode.Tab))
         {
-            int num = miniGameNumber.Next(1, 4);
-            ActivateMinigame(num);
+            ActivateMinigame(currentDoor);
             PanelCameramove.SetActive(false);
             pressPanel.SetActive(false);
 
@@ -71,14 +69,14 @@ public class UIGameController : MonoBehaviour
         currentDoor = 0;
         Debug.Log("Te alejaste de la puerta.");
     }
-    
+
     void ActivateMinigame(int doorNumber)
     {
         switch (doorNumber)
         {
             case 1:
                 typeMinigame.SetActive(true);
-                typeMinigame.GetComponent<TypingChallenge>().StartGame();  
+                typeMinigame.GetComponent<TypingChallenge>().StartGame();
                 Debug.Log("Minijuego de escribir activado.");
                 break;
             case 2:
