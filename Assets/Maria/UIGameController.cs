@@ -50,7 +50,7 @@ public class UIGameController : MonoBehaviour
     void Update()
     {
         candies.text = " Candies: " + GameManager.Instance.candiesQuantity.ToString();
-        if (currentDoor != 0 && Input.GetKeyDown(KeyCode.Alpha1))
+        if (currentDoor != 0 && Input.GetKeyDown(KeyCode.Tab))
         {
             int num = miniGameNumber.Next(1, 4);
             ActivateMinigame(num);
