@@ -114,7 +114,7 @@ public class CandyCupsUI : MonoBehaviour
         restartGameButton.gameObject.SetActive(false);
         quitButton.gameObject.SetActive(false);
 
-        resultText.text = $"Nivel {currentLevel + 1}/{levels.Length}. Presiona 'Empezar'.";
+        resultText.text = $"Level {currentLevel + 1}/{levels.Length}. Press 'Start'.";
 
         DisableCupButtons();
     }
@@ -124,7 +124,7 @@ public class CandyCupsUI : MonoBehaviour
         if (isMixing || levelEnded) return;
 
         startButton.gameObject.SetActive(false);
-        resultText.text = "Elige un vaso para esconder el caramelo.";
+        resultText.text = "Choose a cup.";
 
         for (int i = 0; i < activeCups.Count; i++)
         {
@@ -143,7 +143,7 @@ public class CandyCupsUI : MonoBehaviour
         correctCupIndex = index;
         DisableCupButtons();
 
-        resultText.text = "¡Caramelo escondido! Mezclando...";
+        resultText.text = "Hiding candy! Mixing...";
         StartCoroutine(MoveCandyAndMix(index));
     }
 
@@ -198,7 +198,7 @@ public class CandyCupsUI : MonoBehaviour
         }
 
         isMixing = false;
-        resultText.text = "¿Dónde está el caramelo?";
+        resultText.text = "¿Where's the candy?";
         EnableCupSelectionToFind();
     }
 
@@ -287,11 +287,11 @@ public class CandyCupsUI : MonoBehaviour
 
     void HandleWin()
     {
-        resultText.text = $"¡Correcto! Nivel {currentLevel + 1} superado.";
+        resultText.text = $"¡Correct! Level {currentLevel + 1} .";
 
         if (currentLevel >= levels.Length - 1)
         {
-            resultText.text = "¡Felicidades! ¡Completaste todos los niveles!";
+            resultText.text = "All levels completed!";
             restartGameButton.gameObject.SetActive(true);
         }
         else
@@ -303,7 +303,7 @@ public class CandyCupsUI : MonoBehaviour
 
     void HandleLose()
     {
-        resultText.text = $"¡Incorrecto! Inténtalo de nuevo en el Nivel {currentLevel + 1}.";
+        resultText.text = $"Incorrect, try again in level {currentLevel + 1}.";
         retryButton.gameObject.SetActive(true);
         restartGameButton.gameObject.SetActive(true); // Permitir reiniciar también al perder.
         quitButton.gameObject.SetActive(true);

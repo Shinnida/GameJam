@@ -2817,7 +2817,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &753243934
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5014,7 +5014,7 @@ GameObject:
   - component: {fileID: 1331298377}
   - component: {fileID: 1331298376}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: ChooseCup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
