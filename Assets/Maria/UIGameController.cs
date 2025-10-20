@@ -51,7 +51,7 @@ public class UIGameController : MonoBehaviour
     void Update()
     {
 
-        if (!typeMinigame.activeSelf && !cardMinigame.activeSelf && !cupMinigame.activeSelf )
+        if (!typeMinigame.activeSelf && !cardMinigame.activeSelf && !cupMinigame.activeSelf && !Input.anyKey)
         {
             miniGameActive = false;
         }
