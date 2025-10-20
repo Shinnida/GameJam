@@ -15,6 +15,7 @@ public class UIGameController : MonoBehaviour
 
     private int currentDoor = 0;
     System.Random miniGameNumber = new System.Random();
+    public bool miniGameActive = false;
 
     private void OnEnable()
     {
@@ -49,13 +50,20 @@ public class UIGameController : MonoBehaviour
     }
     void Update()
     {
+
+        if (!typeMinigame.activeSelf && !cardMinigame.activeSelf && !cupMinigame.activeSelf )
+        {
+            miniGameActive = false;
+        }
+
         candies.text = " Candies: " + GameManager.Instance.candiesQuantity.ToString();
-        if (currentDoor != 0 && Input.GetKeyDown(KeyCode.Tab))
+        if (currentDoor != 0 && Input.GetKeyDown(KeyCode.Tab) && !miniGameActive)
         {
             int num = miniGameNumber.Next(1, 4);
             ActivateMinigame(num);
             PanelCameramove.SetActive(false);
             pressPanel.SetActive(false);
+            miniGameActive = true;
 
         }
     }
