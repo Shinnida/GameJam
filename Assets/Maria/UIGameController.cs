@@ -14,6 +14,7 @@ public class UIGameController : MonoBehaviour
     [SerializeField] TextMeshProUGUI candies;
 
     private int currentDoor = 0;
+    System.Random miniGameNumber = new System.Random();
 
     private void OnEnable()
     {
@@ -51,7 +52,8 @@ public class UIGameController : MonoBehaviour
         candies.text = " Candies: " + GameManager.Instance.candiesQuantity.ToString();
         if (currentDoor != 0 && Input.GetKeyDown(KeyCode.Alpha1))
         {
-            ActivateMinigame(currentDoor);
+            int num = miniGameNumber.Next(1, 4);
+            ActivateMinigame(num);
             PanelCameramove.SetActive(false);
             pressPanel.SetActive(false);
 
