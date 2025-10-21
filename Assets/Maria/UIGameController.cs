@@ -35,6 +35,7 @@ public class UIGameController : MonoBehaviour
 
     void Start()
     {
+      //  DontDestroyOnLoad(this);
         typeMinigame.SetActive(false);
         cupMinigame.SetActive(false);
         cardMinigame.SetActive(false);

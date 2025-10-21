@@ -28,6 +28,7 @@ public class CardsController : MonoBehaviour
     //  Llamado por el GameManager con el nivel actual
     public void StartGame(int level)
     {
+        DontDestroyOnLoad(gameObject);
         ClearOldCards();
 
         //  Definir cantidad de pares según nivel
@@ -41,11 +42,49 @@ public class CardsController : MonoBehaviour
 
         PrepareSprites();
         CreateCards();
-        StartCoroutine(ShowAllThenHide());
+
+        Debug.Log("Starting ... Show All Then Hide");
+        //StartCoroutine(ShowAllThenHide());
+
+        Debug.Log("Show.");
+        foreach (Transform child in gridTransform)
+        {
+            Card_Memory card = child.GetComponent<Card_Memory>();
+            card.Show();
+        }
+
+        Debug.Log("Wait...Then Show called");
+
+        WaitThenShow();
+
+    }
+
+    private void WaitThenShow()
+    {
+        Debug.Log("In Method. Waiting now...");
+        //wait
+        int time = 12000; //60fps. 2 seconds
+        while (time > 0) { --time; Debug.Log("1"); }
+
+        Debug.Log("After Wait. Now showing...");
+
+        foreach (Transform child in gridTransform)
+        {
+            Card_Memory card = child.GetComponent<Card_Memory>();
+            card.Hide();
+        }
+
+        canSelect = true;
+
+        //done
+        Debug.Log("Done.");
+
+
     }
 
     IEnumerator ShowAllThenHide()
     {
+        Debug.Log("In Show All Then Hide");
         foreach (Transform child in gridTransform)
         {
             Card_Memory card = child.GetComponent<Card_Memory>();
@@ -62,6 +101,8 @@ public class CardsController : MonoBehaviour
 
         canSelect = true;
     }
+
+
 
     private void PrepareSprites()
     {

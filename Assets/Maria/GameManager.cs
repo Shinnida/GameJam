@@ -18,7 +18,7 @@ public class GameManager : SingletonPersistent<GameManager>
     string chosenSentence;
     void Start()
     {
-
+      //  DontDestroyOnLoad(this);
     }
                 
     void Update()
