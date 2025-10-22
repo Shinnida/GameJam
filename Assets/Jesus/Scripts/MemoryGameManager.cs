@@ -24,7 +24,7 @@ public class MemoryGameManager : MonoBehaviour
 
     private void Start()
     {
-      // DontDestroyOnLoad(this);
+       DontDestroyOnLoad(this);
         if (cardsController == null)
             cardsController = FindFirstObjectByType<CardsController>();
 

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
+using System.Threading;
 
 public class CardsController : MonoBehaviour
 {
@@ -53,20 +54,26 @@ public class CardsController : MonoBehaviour
             card.Show();
         }
 
-        Debug.Log("Wait...Then Show called");
+        Debug.Log("Wait...");
 
-        WaitThenShow();
+        StartCoroutine(WaitThenShow());
 
     }
 
-    private void WaitThenShow()
+    IEnumerator WaitThenShow()
     {
         Debug.Log("In Method. Waiting now...");
-        //wait
-        int time = 12000; //60fps. 2 seconds
-        while (time > 0) { --time; Debug.Log("1"); }
+        yield return new WaitForSeconds(2f);
 
-        Debug.Log("After Wait. Now showing...");
+        Debug.Log("After Wait. Now Calling Hide.");
+
+        Hide();
+    }
+
+
+    private void Hide()
+    {
+        Debug.Log("In Hide. Hiding...");
 
         foreach (Transform child in gridTransform)
         {
@@ -78,8 +85,6 @@ public class CardsController : MonoBehaviour
 
         //done
         Debug.Log("Done.");
-
-
     }
 
     IEnumerator ShowAllThenHide()
@@ -181,7 +186,7 @@ public class CardsController : MonoBehaviour
         }
         else
         {
-            gameManager.OnPairMistake();
+            gameManager.OnPairMistake();//throwing error
 
             firstSelected.Hide();
             secondSelected.Hide();

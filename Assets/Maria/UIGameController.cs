@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class UIGameController : MonoBehaviour
 {
-    [SerializeField] GameObject typeMinigame;
-    [SerializeField] GameObject cupMinigame;
-    [SerializeField] GameObject cardMinigame;
+    [SerializeField] GameObject typeMinigame;   //typing minigame object
+    [SerializeField] GameObject cupMinigame;    //cup minigame object
+    [SerializeField] GameObject cardMinigame;   //card minigame object
+
     [SerializeField] GameObject PanelCameramove;
     [SerializeField] GameObject pressPanel;
     [SerializeField] GameObject GameOver;
@@ -39,6 +40,7 @@ public class UIGameController : MonoBehaviour
         typeMinigame.SetActive(false);
         cupMinigame.SetActive(false);
         cardMinigame.SetActive(false);
+
         pressPanel.SetActive(false);
     }
    public  void ShowPressPanel()
@@ -61,7 +63,8 @@ public class UIGameController : MonoBehaviour
         if (currentDoor != 0 && Input.GetKeyDown(KeyCode.Tab) && !miniGameActive)
         {
             int num = miniGameNumber.Next(1, 4);
-            ActivateMinigame(num);
+            ActivateMinigame(num); // TESt VALUE **************
+
             PanelCameramove.SetActive(false);
             pressPanel.SetActive(false);
             miniGameActive = true;
